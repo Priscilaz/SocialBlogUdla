@@ -38,6 +38,7 @@ namespace BloggieWebProject.Controllers
 
             await blogPostCommentRepositorio.AddAsync(domainModel);
             return RedirectToAction("Index", "Home");
+            //aqui cambie
         }
 
 	}
