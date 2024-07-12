@@ -39,7 +39,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 builder.Services.AddScoped<IBlogPostRepositorio, BlogPostResositorio>();
 builder.Services.AddScoped<IBlogPostCommentRepositorio, BlogPostCommentRepositorio>();
-
+builder.Services.AddScoped<IUserRepositorio, UserRepositorio>();
 
 var app = builder.Build();
 
