@@ -17,11 +17,6 @@ namespace BloggieWebProject.Models.Dominio
         public BlogPost BlogPost { get; set; }
 
 
-        [Required]
-        // Relación con Usuario
-        public Guid UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }
-
 
     }
 }

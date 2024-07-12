@@ -14,5 +14,7 @@ namespace BloggieWebProject.Models.ViewModels
 
         [Required]
         public string NombreUsuario { get; set; }
-    }
+		[Required]
+		public string Contrasenia{ get; set; }
+	}
 }

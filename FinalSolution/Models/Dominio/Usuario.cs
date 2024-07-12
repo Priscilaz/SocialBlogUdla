@@ -4,21 +4,10 @@ namespace BloggieWebProject.Models.Dominio
 {
     public class Usuario
     {
-        public Guid Id { get; set; }
+		public Guid Id { get; set; }
+		public string NombreUsuario { get; set; }
+		public string Email { get; set; }
+		public string Contrasenia { get; set; }
 
-        [Required]
-        public string Nombre { get; set; }
-
-        [Required]
-        public string Apellido { get; set; }
-
-        [Required]
-        public string NombreUsuario { get; set; }
-
-        [Required]
-        public string Password { get; set; }
-
-        // Relación con Comentarios
-        public ICollection<Comentario>? Comentarios { get; set; } = new List<Comentario>();
-    }
+	}
 }

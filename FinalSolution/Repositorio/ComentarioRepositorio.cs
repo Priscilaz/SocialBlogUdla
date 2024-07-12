@@ -41,7 +41,6 @@ namespace BloggieWebProject.Repositorio
             {
                 comentarioExistente.Contenido = comentario.Contenido;
                 comentarioExistente.BlogPostId = comentario.BlogPostId;
-                comentarioExistente.UsuarioId = comentario.UsuarioId;
 
                 await blogDbContext.SaveChangesAsync();
                 return comentarioExistente;

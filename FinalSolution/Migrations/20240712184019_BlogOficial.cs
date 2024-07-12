@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FinalSolution.Migrations
 {
     /// <inheritdoc />
-    public partial class PrimeraMigracion : Migration
+    public partial class BlogOficial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -50,6 +50,34 @@ namespace FinalSolution.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BlogPosts",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Encabezado = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Contenido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Visible = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BlogPosts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    NombreUsuario = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Contrasenia = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -158,20 +186,58 @@ namespace FinalSolution.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "BlogPostComments",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BlogPostId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BlogPostComments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BlogPostComments_BlogPosts_BlogPostId",
+                        column: x => x.BlogPostId,
+                        principalTable: "BlogPosts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Comentarios",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Contenido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BlogPostId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comentarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comentarios_BlogPosts_BlogPostId",
+                        column: x => x.BlogPostId,
+                        principalTable: "BlogPosts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "383cd0da-4d07-4728-b767-50a886bbd2a6", "383cd0da-4d07-4728-b767-50a886bbd2a6", "User", "User" },
-                    { "b6636e35-5215-4b9a-8c56-896396b693f4", "b6636e35-5215-4b9a-8c56-896396b693f4", "SuperAdmin", "SuperAdmin" },
-                    { "dc7236d4-75fa-44cd-ac65-3e80792da8e5", "dc7236d4-75fa-44cd-ac65-3e80792da8e5", "Admin", "Admin" }
+                    { "383cd0da-4d07-4728-b767-50a886bbd2a6", "383cd0da-4d07-4728-b767-50a886bbd2a6", "User", "USER" },
+                    { "b6636e35-5215-4b9a-8c56-896396b693f4", "b6636e35-5215-4b9a-8c56-896396b693f4", "SuperAdmin", "SUPERADMIN" },
+                    { "dc7236d4-75fa-44cd-ac65-3e80792da8e5", "dc7236d4-75fa-44cd-ac65-3e80792da8e5", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "aa692445-a241-4bef-9f9d-aeec35c4bfcc", 0, "0e045b33-5798-4741-abe4-64197ac7bd3a", "superadmin@udla.com", false, false, null, "SUPERADMIN@UDLA.COM", "SUPERADMIN@UDLA.COM", "AQAAAAIAAYagAAAAEINGkD5tCIfSfqsuiPZ58I/Y3HXOtdEu3C4yPD6EvHuyPGuLIIYl9bZZnJyA6WYYww==", null, false, "cfb162ef-16c7-4927-bde6-07af5efa1873", false, "superadmin@udla.com" });
+                values: new object[] { "aa692445-a241-4bef-9f9d-aeec35c4bfcc", 0, "55a5f6df-bb2d-4ffb-9bc9-c57df3609dc5", "superadmin@udla.com", false, false, null, "SUPERADMIN@UDLA.COM", "SUPERADMIN@UDLA.COM", "AQAAAAIAAYagAAAAEBt5ZVqyEnhTKHdAiQ65wbEgxrYMbUmyQHwJoFL4SeOCkRJofl3QMj6adJRt6H5UXQ==", null, false, "2184bf0c-c414-4dc7-8d5f-5221f2ed19d6", false, "superadmin@udla.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
@@ -221,6 +287,16 @@ namespace FinalSolution.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BlogPostComments_BlogPostId",
+                table: "BlogPostComments",
+                column: "BlogPostId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comentarios_BlogPostId",
+                table: "Comentarios",
+                column: "BlogPostId");
         }
 
         /// <inheritdoc />
@@ -242,10 +318,22 @@ namespace FinalSolution.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "BlogPostComments");
+
+            migrationBuilder.DropTable(
+                name: "Comentarios");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "BlogPosts");
         }
     }
 }

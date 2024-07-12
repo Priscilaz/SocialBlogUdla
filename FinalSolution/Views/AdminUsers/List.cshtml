@@ -1,6 +1,4 @@
 ﻿@model FinalSolution.Models.ViewModels.UserViewModel
-@{
-}
 
 <div class="bg-secondary bg-opacity-10 py-2">
     <div class="container">
@@ -12,12 +10,10 @@
 </div>
 <div>
     <div class="container py-5">
-
         <div class="mb-3 d-flex justify-content-end">
             <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalCrearUsuario">
                 Crear Usuario
             </button>
-
         </div>
 
         <div>
@@ -30,6 +26,7 @@
                                 <th>Id</th>
                                 <th>Nombre de Usuario</th>
                                 <th>Email</th>
+                                <th>Contrasenia</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,6 +36,7 @@
                                     <td>@user.Id</td>
                                     <td>@user.NombreUsuario</td>
                                     <td>@user.Email</td>
+                                    <td>@user.Contrasenia</td>
                                 </tr>
                             }
                         </tbody>
@@ -51,7 +49,6 @@
             </div>
         </div>
 
-        @* Modal *@
         <form asp-action="List" method="post">
             <div class="modal fade" id="modalCrearUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -100,3 +97,5 @@
                 </div>
             </div>
         </form>
+    </div>
+</div>

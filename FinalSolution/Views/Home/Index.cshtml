@@ -1,10 +1,5 @@
 ﻿@model BloggieWebProject.Models.ViewModels.HomeViewModel
 
-@{
-    ViewData["Title"] = "Home Page";
-}
-
-
 <div class="container col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-5 py-5">
         <div class="col-12 col-lg-6">
@@ -12,63 +7,36 @@
                 Blog Administrativo SOCIAL UDLA
             </h1>
             <p class="lead">
-                El blog está hecho para crear Posts sobre temas de la Universidad de las Américas
-                Quiere conocer más sobre temas de la Universidad de las Américas? Descargue la aplicación móvil.            
+                El blog está hecho para crear Posts sobre temas de la Universidad de las Américas.
+                Quiere conocer más sobre temas de la Universidad de las Américas? Descargue la aplicación móvil.
             </p>
-
-
         </div>
-
-
         <div class="col-12 col-lg-6">
             <img src="https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                 alt="SOCIAL UDLA Blog" 
-                 class="d-block mx-lg-auto img-fluid" width="300"/>
+                 alt="SOCIAL UDLA Blog"
+                 class="d-block mx-lg-auto img-fluid" width="300" />
         </div>
     </div>
 </div>
-
-
-@* <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-6 d-flex">
-            @if (Model != null && Model.Tags.Any())
-            {
-                foreach (var tag in Model.Tags)
-                {
-                 <span class="badge bg-dark me-1">
-                     @tag.Nombre
-                 </span>   
-                }
-            }
-        </div>
-    </div>
-</div> *@
 
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6">
             @if (Model != null && Model.BlogPosts.Any())
             {
-                foreach(var blogPost in Model.BlogPosts)
+                foreach (var blogPost in Model.BlogPosts)
                 {
                     <div class="mb-5 bg-light box-shadow p-5">
-                        
                         <h2 class="mb-4">@blogPost.Encabezado</h2>
                         <div>@Html.Raw(blogPost.Contenido)</div>
                         <a class="btn btn-dark"
-                            asp-area=""
-                            asp-controller="Blogs"
-                            asp-action="Details"
+                           asp-area=""
+                           asp-controller="Blogs"
+                           asp-action="Details"
                            asp-route-id="@blogPost.Id">Leer Más</a>
                     </div>
                 }
-
             }
-
-
-
-
         </div>
     </div>
 </div>

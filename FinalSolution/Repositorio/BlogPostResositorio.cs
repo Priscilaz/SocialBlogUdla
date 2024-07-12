@@ -1,20 +1,20 @@
 ﻿using BloggieWebProject.Data;
 using BloggieWebProject.Models.Dominio;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BloggieWebProject.Repositorio
 {
-    public class BlogPostResositorio : IBlogPostRepositorio
-         
+    public class BlogPostRepositorio : IBlogPostRepositorio
     {
         private readonly BlogDbContext blogDbContext;
-        public BlogPostResositorio(BlogDbContext blogDbContext)
+
+        public BlogPostRepositorio(BlogDbContext blogDbContext)
         {
-     
             this.blogDbContext = blogDbContext;
         }
-
-        public BlogDbContext BlogDbContext { get; }
 
         public async Task<BlogPost> AddAsync(BlogPost blogPost)
         {
@@ -26,7 +26,6 @@ namespace BloggieWebProject.Repositorio
         public async Task<BlogPost?> DeleteAsync(Guid id)
         {
             var blogExistente = await blogDbContext.BlogPosts.FindAsync(id);
-
             if (blogExistente != null)
             {
                 blogDbContext.BlogPosts.Remove(blogExistente);
@@ -36,10 +35,9 @@ namespace BloggieWebProject.Repositorio
             return null;
         }
 
-        public async Task<IEnumerable<BlogPost?>> GetAllAsync()
+        public async Task<IEnumerable<BlogPost>> GetAllAsync()
         {
             return await blogDbContext.BlogPosts.ToListAsync();
-
         }
 
         public async Task<BlogPost?> GetAsync(Guid id)
@@ -47,21 +45,14 @@ namespace BloggieWebProject.Repositorio
             return await blogDbContext.BlogPosts.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-       
-
         public async Task<BlogPost?> UpdateAsync(BlogPost blogPost)
         {
-            
-           var blogExistente= await blogDbContext.BlogPosts.FirstOrDefaultAsync(x => x.Id == blogPost.Id);
-
-            if(blogExistente != null)
+            var blogExistente = await blogDbContext.BlogPosts.FirstOrDefaultAsync(x => x.Id == blogPost.Id);
+            if (blogExistente != null)
             {
-                blogExistente.Id = blogPost.Id;
                 blogExistente.Encabezado = blogPost.Encabezado;
                 blogExistente.Contenido = blogPost.Contenido;
                 blogExistente.Visible = blogPost.Visible;
-                
-                
                 await blogDbContext.SaveChangesAsync();
                 return blogExistente;
             }

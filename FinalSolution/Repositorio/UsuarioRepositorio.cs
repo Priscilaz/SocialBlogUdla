@@ -39,10 +39,9 @@ namespace BloggieWebProject.Repositorio
 
             if (usuarioExistente != null)
             {
-                usuarioExistente.Nombre = usuario.Nombre;
-                usuarioExistente.Apellido = usuario.Apellido;
                 usuarioExistente.NombreUsuario = usuario.NombreUsuario;
-                usuarioExistente.Password = usuario.Password;
+                usuarioExistente.Email = usuario.Email;
+                usuarioExistente.Contrasenia = usuario.Contrasenia;
 
                 await blogDbContext.SaveChangesAsync();
                 return usuarioExistente;
