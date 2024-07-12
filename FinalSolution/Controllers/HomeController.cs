@@ -26,10 +26,13 @@ namespace BloggieWebProject.Controllers
         {
             //tener todos los blogs
             var blogPosts= await blogPostRepositorio.GetAllAsync();
-
+            var viewModel = new HomeViewModel
+            {
+                BlogPosts = blogPosts
+            };
            
 
-            return View();
+            return View(viewModel);
         }
 
         public IActionResult Privacy()

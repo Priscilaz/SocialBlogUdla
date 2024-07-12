@@ -14,6 +14,6 @@ namespace FinalSolution.Models.ViewModels
 
 		public bool Visible { get; set; }
 
-        public string CommentDescription { get; set; }
+        public IEnumerable<BlogComment> Comments { get; set; }
     }
 }

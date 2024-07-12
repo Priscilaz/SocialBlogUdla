@@ -33,7 +33,7 @@ namespace BloggieWebProject.Controllers
             var domainModel = new BlogPostComment
             {
                 BlogPostId = blogDetailsViewModel.Id,
-                Description = blogDetailsViewModel.CommentDescription
+				Description = blogDetailsViewModel.Contenido
             };
 
             await blogPostCommentRepositorio.AddAsync(domainModel);
