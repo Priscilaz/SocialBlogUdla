@@ -2,18 +2,26 @@
 
 namespace FinalSolution.Models.ViewModels
 {
-	public class BlogDetailsViewModel
-	{
-		public Guid Id { get; set; }
+    public class BlogDetailsViewModel
+    {
+        public Guid Id { get; set; }
 
-		[Required]
-		public string Encabezado { get; set; }
+        [Required]
+        public string Encabezado { get; set; }
 
-		[Required]
-		public string Contenido { get; set; }
+        [Required]
+        public string Contenido { get; set; }
 
-		public bool Visible { get; set; }
+        public bool Visible { get; set; }
 
-        public IEnumerable<BlogComment> Comments { get; set; }
+        public IEnumerable<BlogCommentViewModel> Comments { get; set; }
+
+        public string NewComment { get; set; } // Campo para el nuevo comentario
+    }
+
+    public class BlogCommentViewModel
+    {
+        public string Description { get; set; }
+        
     }
 }

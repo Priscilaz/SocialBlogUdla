@@ -55,13 +55,12 @@
                     <div class="mb-5 bg-light box-shadow p-5">
                         
                         <h2 class="mb-4">@blogPost.Encabezado</h2>
-                        <p>@blogPost.Contenido</p>
+                        <div>@Html.Raw(blogPost.Contenido)</div>
                         <a class="btn btn-dark"
                             asp-area=""
                             asp-controller="Blogs"
-                            asp-action="Index"
-                          
-                            >Leer Más</a>
+                            asp-action="Details"
+                           asp-route-id="@blogPost.Id">Leer Más</a>
                     </div>
                 }
 
