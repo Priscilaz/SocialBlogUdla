@@ -23,7 +23,7 @@
                         <h5>Comentarios</h5>
                         @if (signInManager.IsSignedIn(User))
                         {
-                            <form method="post" asp-action="AddComment">
+                            <form method="post" asp-action="AddComment" asp-controller="Blogs">
                                 <div class="mb-3">
                                     <label class="form-label">Descripción</label>
                                     <textarea class="form-control" asp-for="NewComment"></textarea>
