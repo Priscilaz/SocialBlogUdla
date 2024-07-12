@@ -1,0 +1,42 @@
+﻿@model BloggieWebProject.Models.ViewModels.AgregarBlogPostRequest
+
+@{
+}
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Agregar un Nuevo BlogPost - Admin Functionality</h1>
+    </div>
+</div>
+
+<div class="container py-2">
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Encabezado</label>
+            <input type="text" class="form-control" id="encabezado" asp-for="Encabezado" />
+        </div>
+        
+
+        <div class="mb-3">
+            <label class="form-label">Contenido</label>
+            <textarea class="form-control" id="contenido" asp-for="Contenido"></textarea>
+        </div>
+
+      
+        
+       
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="visible" asp-for="Visible" />
+            <label class="form-check-label" for="visible">Visible</label>
+        </div>
+
+       
+        <button type="submit" class="btn btn-primary">Agregar</button>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        var editor = new FroalaEditor('#contenido');
+    </script>
+}
