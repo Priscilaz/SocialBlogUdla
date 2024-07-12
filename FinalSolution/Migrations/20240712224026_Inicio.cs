@@ -237,7 +237,7 @@ namespace FinalSolution.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "aa692445-a241-4bef-9f9d-aeec35c4bfcc", 0, "5f6d98e9-12ee-44da-86d1-48e170afc1d1", "superadmin@udla.com", false, false, null, "SUPERADMIN@UDLA.COM", "SUPERADMIN@UDLA.COM", "AQAAAAIAAYagAAAAEP+MyycE5saIBty6lHhHMw8CJ1mMRtybvM8ya31kFoQ8/RoMz9SDp09xe+caYg6u7A==", null, false, "65191bea-5a2d-4309-a178-d8207fa4771f", false, "superadmin@udla.com" });
+                values: new object[] { "aa692445-a241-4bef-9f9d-aeec35c4bfcc", 0, "b155e50c-f2ff-4b28-8693-07e6f4dfff5e", "superadmin@udla.com", false, false, null, "SUPERADMIN@UDLA.COM", "SUPERADMIN@UDLA.COM", "AQAAAAIAAYagAAAAEN0zD6ELHJw9yev6+kABxQrJNIIjOcnQ27qCdFLzsiLhIByHhI4M7HlhI4O7RK+leA==", null, false, "d7556c57-dca6-44af-a024-ea55bbf8a7fc", false, "superadmin@udla.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

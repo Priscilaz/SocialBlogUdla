@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalSolution.Migrations
 {
     [DbContext(typeof(BlogDbContext))]
-    [Migration("20240712215934_Inicio")]
+    [Migration("20240712224026_Inicio")]
     partial class Inicio
     {
         /// <inheritdoc />
@@ -254,15 +254,15 @@ namespace FinalSolution.Migrations
                         {
                             Id = "aa692445-a241-4bef-9f9d-aeec35c4bfcc",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5f6d98e9-12ee-44da-86d1-48e170afc1d1",
+                            ConcurrencyStamp = "b155e50c-f2ff-4b28-8693-07e6f4dfff5e",
                             Email = "superadmin@udla.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@UDLA.COM",
                             NormalizedUserName = "SUPERADMIN@UDLA.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEP+MyycE5saIBty6lHhHMw8CJ1mMRtybvM8ya31kFoQ8/RoMz9SDp09xe+caYg6u7A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEN0zD6ELHJw9yev6+kABxQrJNIIjOcnQ27qCdFLzsiLhIByHhI4M7HlhI4O7RK+leA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "65191bea-5a2d-4309-a178-d8207fa4771f",
+                            SecurityStamp = "d7556c57-dca6-44af-a024-ea55bbf8a7fc",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@udla.com"
                         });

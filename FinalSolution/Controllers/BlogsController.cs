@@ -4,6 +4,7 @@ using FinalSolution.Models.ViewModels;
 using FinalSolution.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BloggieWebProject.Controllers
@@ -48,11 +49,19 @@ namespace BloggieWebProject.Controllers
                 return NotFound();
             }
 
+            // Cargar comentarios asociados al blog
+            var comments = await blogPostCommentRepositorio.GetCommentsByBlogIdAsync(id);
+
             var viewModel = new BlogDetailsViewModel
             {
                 Id = blogPost.Id,
                 Encabezado = blogPost.Encabezado,
                 Contenido = blogPost.Contenido,
+                Comments = comments.Select(c => new BlogCommentViewModel
+                {
+                    Description = c.Description
+                    // Asigna otras propiedades aquí si es necesario
+                }).ToList()
             };
 
             return View(viewModel);
@@ -81,7 +90,27 @@ namespace BloggieWebProject.Controllers
             };
 
             await blogPostCommentRepositorio.AddAsync(domainModel);
-            return RedirectToAction("Details", new { id = blogDetailsViewModel.Id });
+
+            // Recargar los comentarios después de añadir uno nuevo
+            var comments = await blogPostCommentRepositorio.GetCommentsByBlogIdAsync(blogDetailsViewModel.Id);
+
+            var blogPost = await blogPostRepositorio.GetAsync(blogDetailsViewModel.Id);
+            if (blogPost == null)
+            {
+                return NotFound();
+            }
+
+            // Asignar los comentarios y otros datos actualizados al modelo de vista
+            blogDetailsViewModel.Comments = comments.Select(c => new BlogCommentViewModel
+            {
+                Description = c.Description
+                // Asigna otras propiedades aquí si es necesario
+            }).ToList();
+            blogDetailsViewModel.Contenido = blogPost.Contenido;
+            blogDetailsViewModel.Encabezado = blogPost.Encabezado;
+            blogDetailsViewModel.NewComment = string.Empty; // Limpiar el campo de nuevo comentario
+
+            return View("Details", blogDetailsViewModel);
         }
     }
 }

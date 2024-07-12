@@ -1,4 +1,6 @@
-﻿using FinalSolution.Models.ViewModels;
+﻿using BloggieWebProject.Models.Dominio;
+using FinalSolution.Models.ViewModels;
+using FinalSolution.Repositorio;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -9,11 +11,13 @@ namespace FinalSolution.Controllers
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
+        private readonly IUserRepositorio userRepositorio;
 
-        public CuentaController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public CuentaController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IUserRepositorio userRepositorio)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.userRepositorio = userRepositorio;
         }
 
         [HttpGet]
@@ -39,6 +43,16 @@ namespace FinalSolution.Controllers
 
                 if (roleIdentityResult.Succeeded)
                 {
+                    var usuario = new Usuario
+                    {
+                        Id = Guid.Parse(identityUser.Id),
+                        NombreUsuario = registrarViewModel.NombreUsuario,
+                        Email = registrarViewModel.Email,
+                        Contrasenia = identityUser.PasswordHash
+                    };
+
+                    await userRepositorio.AddUsuarioAsync(usuario);
+
                     return RedirectToAction("Registrar");
                 }
             }
@@ -76,4 +90,5 @@ namespace FinalSolution.Controllers
             return View();
         }
     }
+
 }
