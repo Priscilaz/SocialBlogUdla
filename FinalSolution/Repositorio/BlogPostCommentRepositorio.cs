@@ -29,4 +29,5 @@ namespace FinalSolution.Repositorio
             return await blogDbContext.BlogPostComments.Where(x => x.BlogPostId == blogPostId).ToListAsync();
         }
     }
+
 }

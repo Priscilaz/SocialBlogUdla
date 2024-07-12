@@ -8,9 +8,6 @@ namespace BloggieWebProject.Repositorio
 
         Task<BlogPost?> GetAsync(Guid id);
 
-        
-
-
         Task<BlogPost> AddAsync(BlogPost blogPost);
 
         Task<BlogPost?> UpdateAsync(BlogPost blogPost);

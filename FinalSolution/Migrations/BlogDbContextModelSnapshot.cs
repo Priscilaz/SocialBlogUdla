@@ -251,15 +251,15 @@ namespace FinalSolution.Migrations
                         {
                             Id = "aa692445-a241-4bef-9f9d-aeec35c4bfcc",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f85de867-4985-4704-b149-9dd4443228f1",
+                            ConcurrencyStamp = "5f6d98e9-12ee-44da-86d1-48e170afc1d1",
                             Email = "superadmin@udla.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@UDLA.COM",
                             NormalizedUserName = "SUPERADMIN@UDLA.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEFLFhlMtNLOnTXsRepV+hlIOGWDht+llfIQXVzNvwzi5kcoiV0Gg/9Jzu5Aka4QHBw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEP+MyycE5saIBty6lHhHMw8CJ1mMRtybvM8ya31kFoQ8/RoMz9SDp09xe+caYg6u7A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4743455f-3b5b-4870-9c09-77409b0f29ee",
+                            SecurityStamp = "65191bea-5a2d-4309-a178-d8207fa4771f",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@udla.com"
                         });

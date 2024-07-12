@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FinalSolution.Migrations
 {
     /// <inheritdoc />
-    public partial class BlogOficial : Migration
+    public partial class Inicio : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -237,7 +237,7 @@ namespace FinalSolution.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "aa692445-a241-4bef-9f9d-aeec35c4bfcc", 0, "55a5f6df-bb2d-4ffb-9bc9-c57df3609dc5", "superadmin@udla.com", false, false, null, "SUPERADMIN@UDLA.COM", "SUPERADMIN@UDLA.COM", "AQAAAAIAAYagAAAAEBt5ZVqyEnhTKHdAiQ65wbEgxrYMbUmyQHwJoFL4SeOCkRJofl3QMj6adJRt6H5UXQ==", null, false, "2184bf0c-c414-4dc7-8d5f-5221f2ed19d6", false, "superadmin@udla.com" });
+                values: new object[] { "aa692445-a241-4bef-9f9d-aeec35c4bfcc", 0, "5f6d98e9-12ee-44da-86d1-48e170afc1d1", "superadmin@udla.com", false, false, null, "SUPERADMIN@UDLA.COM", "SUPERADMIN@UDLA.COM", "AQAAAAIAAYagAAAAEP+MyycE5saIBty6lHhHMw8CJ1mMRtybvM8ya31kFoQ8/RoMz9SDp09xe+caYg6u7A==", null, false, "65191bea-5a2d-4309-a178-d8207fa4771f", false, "superadmin@udla.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
